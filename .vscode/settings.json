@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "c:\\Users\\User\\Desktop\\Cub3D",
+            "binaryPath": "c:\\Users\\User\\Desktop\\Cub3D\\cub3D",
+            "binaryArgs": []
+        }
+    ]
+}
