@@ -6,7 +6,7 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:26:39 by intonoya          #+#    #+#             */
-/*   Updated: 2023/04/27 22:12:32 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/05/17 05:05:26 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # include "../libft/libft.h"
 # include <stdbool.h>
 
+//for img:
+
 typedef struct s_img
 {
 	char		*path;
@@ -37,6 +39,8 @@ typedef struct s_img
 	int			width;
 }				t_img;
 
+//for gnl:
+
 typedef struct s_line
 {
 	char	*line;
@@ -45,16 +49,30 @@ typedef struct s_line
 	char	*ptr;
 }				t_line;
 
+//for keys:
+
+typedef struct s_keys
+{
+	int		w;
+	int		a;
+	int		s;
+	int		d;
+	int		left;
+	int		right;
+}				t_keys;
+
+//for map:
+
 struct s_map
 {
 	t_img		data;
-	t_img		no;
-	t_img		so;
-	t_img		we;
-	t_img		ea;
+	t_img		north;
+	t_img		south;
+	t_img		west;
+	t_img		east;
 	t_keys		keys;
-	int			f_color[3];
-	int			c_color[3];
+	int			f_colour[3];
+	int			c_colour[3];
 	int			rows_tmp;
 	int			rows;
 	int			cols;
@@ -62,12 +80,141 @@ struct s_map
 	char		**matrix;
 }				t_map;
 
-int		ft_exit(char *str);
+//for cub:
+
+typedef struct s_game
+{
+	void		*mlx;
+	void		*mlx_win;
+	double		posx;
+	double		posy;
+	double		dirx;
+	double		diry;
+	double		planex;
+	double		planey;
+	double		camera_x;
+	double		ray_dir_x;
+	double		ray_dir_y;
+	int			mapx;
+	int			mapy;
+	double		side_dist_x;
+	double		side_dist_y;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double		perp_wall_dist;
+	double		move_speed;
+	double		rot_speed;
+	int			step_x;
+	int			step_y;
+	int			s_count;
+	char		player_view;
+}				t_game;
+
+struct	s_vars
+{
+	int		hit;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	int		tex_x;
+	int		tex_y;
+	int		color;
+	double	buffer[WIN_WIDTH];
+	double	wall_x;
+	double	step;
+	double	tex_pos;
+}		vars;
+
+t_game 			g_game;
+
+//for map:
+
+int		check_map_name(char *string, char *extension);
+void    check_invalid_characters_helper(int i, int j);
+int		check_invalid_characters(void);
+void	first_and_last_row(char *str);
+void	col_border(char *s);
+
+//for extension:
+
 int 	file_exists(char *filename);
 int 	check_extension(char *fn, char *fm);
-int		check_map_name(char *string, char *extansion);
 int 	is_space(char *str);
-void    check_invalid_characters1(int i, int j);
-int		check_invalid_characters2(void);
+int		check_colours(void);
+
+//ft_mlx_functions:
+
+int		ft_mlx_pressed(int keycode);
+int		ft_mlx_released(int keycode);
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
+
+//for matrix:
+
+void	matrix(void);
+void	minus_check(int i, int j);
+void	allocate_matrix(int rows, int cols);
+char    **free_matrix(char **map);
+void	check_borders(void);
+
+//for map:
+
+char	*remove_empty_lines(int fd);
+void	tmp_map(int fd);
+void	r_and_c(void);
+void	map_setting(int fd);
+void	get_columns(int fd);
+
+
+void	ft_clear(void);
+int		ft_exit(char *str);
+void	ft_free(void);
+int		start(void);
+
+//keys:
+
+void	right_key(double old_dirx, double old_planex);
+void	read_arrow_keys(void);
+void	a_d_keys(void);
+void	read_keys(void);
+
+//for position:
+
+int		check_start_position(char symbol, int *is_there);
+void	set_player_position(int x, int y);
+void	set_player_dir_plane_helper(char **map);
+void	set_player_dir_plane(char **map);
+
+//for gnl:
+
+size_t	ft_gnl_strlen(char *str);
+char	*ft_gnl_strjoin(char *s1, char *s2);
+char 	*ft_gnl_strchr(char *s, int c);
+int		get_next_line(int fd, char **line);
+
+void	init(int fd);
+
+//parsing:
+
+void	ft_colour(char *line, char mode);
+char	*texture_path(char *line);
+void	ft_texture(char *line);
+void	parsing(int fd);
+
+//for mlx:
+
+void	set_mlx_images(void);
+void	set_mlx_addresses(void);
+int		rgb(int *colors);
+
+//raycasting:
+
+void	raycasting_vars(int x);
+void	ft_ray_directions(void);
+void	ft_wall_hit(void);
+void	ft_init_vars(void);
+void	ft_draw(int *x);
+void	ft_raycasting(void);
+
 
 #endif

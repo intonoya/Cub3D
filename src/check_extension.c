@@ -6,7 +6,7 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 22:17:00 by intonoya          #+#    #+#             */
-/*   Updated: 2023/04/27 22:27:38 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/05/17 03:01:57 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,39 @@ int check_extension(char *fn, char *fm)
 		&& *(fn + fn_len - 4) == *(fm + fm_len - 4));
 }
 
-int	check_map_name(char *string, char *extansion)
+int	check_map_name(char *string, char *extension)
 {
 	int		i;
 	int		len;
 
 	i = 0;
-	len = ft_strlen(extansion);
+	len = ft_strlen(extension);
 	while (string[i])
 		i++;
 	while (len--)
 		i--;
 	if (string[i] == '.')
-		if (ft_strncmp((string + i - 1), extansion, ft_strlen(extansion)))
+		if (ft_strncmp((string + i - 1), extension, ft_strlen(extension)))
 			return (1);
 	return (0);
+}
+
+int	check_colours(void)
+{
+	int		i;
+
+	i = 0;
+	while (i < 3)
+	{
+		if (t_map.f_colour[i] < 0 || t_map.f_colour[i] > 255)
+			return (0);
+		if (t_map.c_colour[i] < 0 || t_map.c_colour[i] > 255)
+			return (0);
+		if (t_map.c_colour[i] < 0)
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int is_space(char *str)
@@ -73,12 +91,12 @@ int is_space(char *str)
             count++;
         i++;
     }
-    if (count = ft_strlen(str))
+    if (count == ft_strlen(str))
         return (1);
     return (0);
 }
 
-/*char    **free_matrix(char *map)
+char    **free_matrix(char **map)
 {
     int i;
 
@@ -93,4 +111,4 @@ int is_space(char *str)
         free(map);
     }
     return (NULL);
-}*/
+}

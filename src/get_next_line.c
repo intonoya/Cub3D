@@ -5,103 +5,89 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 17:29:34 by intonoya          #+#    #+#             */
-/*   Updated: 2023/04/27 22:11:58 by intonoya         ###   ########.fr       */
+/*   Created: 2023/05/17 02:38:13 by intonoya          #+#    #+#             */
+/*   Updated: 2023/05/17 02:38:34 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3D.h"
 
-char	*get_line(char *str, t_line *the_line)
-{
-	int	i;
+#include "../include/cub3D.h"
 
+char	*the_line(char *tmp)
+{
+	int		i;
+	int		j;
+	char	*line;
+
+	j = 0;
 	i = 0;
-	if (!str[i])
-		return (NULL);
-	while (str[i] && str[i] != '\n')
+	while (tmp && tmp[i] != '\n' && tmp[i] != '\0')
 		i++;
-	if (str[i] == '\0')
+	line = (char *)malloc(i + 1);
+	if (!line)
 		return (NULL);
-	the_line->ptr = malloc(sizeof(char) * (i + 1));
-	if (!the_line->ptr)
-		return (NULL);
-	i = 0;
-	while (str[i] && str[i] != '\n')
+	while (j < i)
 	{
-		the_line->ptr[i] = str[i];
-		i++;
+		line[j] = tmp[j];
+		j++;
 	}
-	the_line->ptr[i] = 0;
-	return (the_line->ptr);
+	line[j] = '\0';
+	return (line);
 }
 
-static char	*next_line(char *str)
+char	*leftover(char *tmp)
 {
+	int		i;
+	int		j;
 	char	*ptr;
 
-	ptr = malloc(sizeof(char) * 1);
-	ptr[0] = 0;
-	free(str);
+	j = 0;
+	i = 0;
+	if (!tmp)
+		return (NULL);
+	while (tmp && tmp[i] != '\n' && tmp[i] != '\0')
+		i++;
+	if (tmp[i] == '\0')
+	{
+		free(tmp);
+		return (NULL);
+	}
+	ptr = (char *)malloc(ft_gnl_strlen(tmp) - i + 1);
+	if (!ptr)
+		return (NULL);
+	i++;
+	while (tmp[i])
+		ptr[j++] = tmp[i++];
+	ptr[j] = '\0';
+	free(tmp);
 	return (ptr);
 }
 
-static int	newline(char *str)
+int	get_next_line(int fd, char **line)
 {
-	if (!str)
-		return (0);
-	while (*str)
-	{
-		if (*str == '\n')
-			return (1);
-		str++;
-	}
-	return (0);
-}
+	int			r;
+	char		*buf;
+	static char	*tmp;
 
-static char	*read_line(char *str, int fd, t_line *the_line)
-{
-	int	i;
-
-	i = 1;
-	while (i != 0)
+	if (fd < 0 || !line || BUFFER_SIZE <= 0)
+		return (-1);
+	buf = (char *)malloc(BUFFER_SIZE + 1);
+	r = 1;
+	while (r > 0)
 	{
-		i = read(fd, the_line->buff, 1);
-		if (i == -1)
-		{
-			free(the_line->buff);
-			return (NULL);
-		}
-		the_line->buff[i] = 0;
-		the_line->tmp = str;
-		if (!the_line->tmp)
-		{
-			the_line->tmp = malloc(sizeof(char) * 1);
-			the_line->tmp[0] = 0;
-		}
-		str = ft_strjoin(the_line->tmp, the_line->buff);
-		free(the_line->tmp);
-		if (newline(str) == 1)
+		r = read(fd, buf, BUFFER_SIZE);
+		buf[r] = '\0';
+		tmp = ft_gnl_strjoin(tmp, buf);
+		if (ft_gnl_strchr(buf, '\n'))
 			break ;
 	}
-	free(the_line->buff);
-	return (str);
-}
-
-char	*grab_line(int fd)
-{
-	static char	*str;
-	t_line		the_line;
-
-	if (fd < 0)
-		return (NULL);
-	the_line.buff = malloc(sizeof(char) * 2);
-	if (!the_line.buff)
-		return (NULL);
-	str = read_line(str, fd, &the_line);
-	if (!str)
-		return (NULL);
-	the_line.line = get_line(str, &the_line);
-	str = next_line(str);
-	return (the_line.line);
+	free(buf);
+	*line = the_line(tmp);
+	tmp = leftover(tmp);
+	if (r < 0)
+		return (-1);
+	if (r == 0 && !tmp)
+		return (0);
+	return (1);
 }
