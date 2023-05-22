@@ -6,7 +6,7 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:26:39 by intonoya          #+#    #+#             */
-/*   Updated: 2023/05/17 05:05:26 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/05/22 05:31:55 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,6 +206,7 @@ void	parsing(int fd);
 void	set_mlx_images(void);
 void	set_mlx_addresses(void);
 int		rgb(int *colors);
+int		get_color(t_img *data, int x, int y);
 
 //raycasting:
 

@@ -6,7 +6,7 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:32:01 by intonoya          #+#    #+#             */
-/*   Updated: 2023/05/17 02:54:16 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/05/22 04:15:11 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 		if (fd == -1)
 			ft_exit("Error: Invalid parameter!");
 		if (!(check_extension(argv[1], ".cub")))
-			ft_exit("Invalid file");
+			ft_exit("Error: Invalid file!");
 		init(fd);
 		close(fd);
 		fd = open(argv[1], O_RDONLY);

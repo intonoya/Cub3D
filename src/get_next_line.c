@@ -6,11 +6,9 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 02:38:13 by intonoya          #+#    #+#             */
-/*   Updated: 2023/05/17 02:38:34 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/05/22 04:09:38 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "../include/cub3D.h"
 
 #include "../include/cub3D.h"
 

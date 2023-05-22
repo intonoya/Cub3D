@@ -6,7 +6,7 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 13:20:20 by intonoya          #+#    #+#             */
-/*   Updated: 2023/05/01 18:54:02 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/05/22 04:25:18 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 int	ft_mlx_pressed(int keycode)
 {
 	if (keycode == 53)
+	{
 		ft_exit("Game over :(");
+		exit(0);
+	}
 	else if (keycode == 13)
 		t_map.keys.w = 1;
 	else if (keycode == 1)
