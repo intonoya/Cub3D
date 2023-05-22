@@ -6,7 +6,7 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:32:01 by intonoya          #+#    #+#             */
-/*   Updated: 2023/05/22 04:15:11 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/05/22 06:41:11 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ void	ft_mlx_start(void)
 	mlx_loop(g_game.mlx);
 }
 
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    int		fd;
+	int	fd;
 
 	if (argc == 2)
 	{

@@ -6,18 +6,18 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:11:44 by intonoya          #+#    #+#             */
-/*   Updated: 2023/05/01 18:37:36 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/05/22 06:48:49 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3D.h"
 
-void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
+void	my_mlx_pixel_put(t_img *data, int x, int y, int colour)
 {
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	*(unsigned int *)dst = colour;
 }
 
 void	ft_clear(void)
@@ -59,4 +59,3 @@ void	ft_free(void)
 	free(t_map.east.img);
 	free(t_map.east.addr);
 }
-

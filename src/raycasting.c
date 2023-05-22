@@ -6,7 +6,7 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 04:55:10 by intonoya          #+#    #+#             */
-/*   Updated: 2023/05/17 05:26:51 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/05/22 06:09:37 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,18 +101,18 @@ void	ft_draw(int *x)
 		if (vars.side == 0)
 		{
 			if (g_game.step_x > 0)
-				vars.color = get_color(&t_map.south, vars.tex_x, vars.tex_y);
+				vars.colour = get_colour(&t_map.south, vars.tex_x, vars.tex_y);
 			else
-				vars.color = get_color(&t_map.north, vars.tex_x, vars.tex_y);
+				vars.colour = get_colour(&t_map.north, vars.tex_x, vars.tex_y);
 		}
 		else
 		{
 			if (g_game.step_y > 0)
-				vars.color = get_color(&t_map.west, vars.tex_x, vars.tex_y);
+				vars.colour = get_colour(&t_map.west, vars.tex_x, vars.tex_y);
 			else
-				vars.color = get_color(&t_map.east, vars.tex_x, vars.tex_y);
+				vars.colour = get_colour(&t_map.east, vars.tex_x, vars.tex_y);
 		}
-		my_mlx_pixel_put(&t_map.data, *x, y, vars.color);
+		my_mlx_pixel_put(&t_map.data, *x, y, vars.colour);
 		y++;
 	}
 }
@@ -124,7 +124,7 @@ void	ft_raycasting(void)
 
 	x = 0;
 	y = 0;
-	vars.color = 0;
+	vars.colour = 0;
 	while (x < WIN_WIDTH)
 	{
 		raycasting_vars(x);

@@ -6,7 +6,7 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 22:17:00 by intonoya          #+#    #+#             */
-/*   Updated: 2023/05/17 05:34:14 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/05/22 06:29:44 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	col_border(char *s)
 	}
 }
 
-void    check_invalid_characters_helper(int i, int j)
+void	check_invalid_characters_helper(int i, int j)
 {
-    if (t_map.matrix[i][j] != 'N' && t_map.matrix[i][j] != 'S' &&
+	if (t_map.matrix[i][j] != 'N' && t_map.matrix[i][j] != 'S' &&
 		t_map.matrix[i][j] != 'W' && t_map.matrix[i][j] != 'E' &&
 		t_map.matrix[i][j] != '0' && t_map.matrix[i][j] != '1' &&
 		t_map.matrix[i][j] != '-')

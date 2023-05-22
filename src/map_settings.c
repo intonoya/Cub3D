@@ -6,7 +6,7 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:17:48 by intonoya          #+#    #+#             */
-/*   Updated: 2023/05/17 05:00:25 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/05/22 06:42:01 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,3 @@ void	map_setting(int fd)
 	matrix();
 	check_borders();
 }
-

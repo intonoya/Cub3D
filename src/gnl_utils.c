@@ -6,7 +6,7 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 02:39:25 by intonoya          #+#    #+#             */
-/*   Updated: 2023/05/17 02:41:12 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/05/22 06:53:00 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ char	*ft_gnl_strjoin(char *s1, char *s2)
 	int		i;
 	int		j;
 
-	if (!(join = malloc(sizeof(char) *
-					(ft_gnl_strlen(s1) + ft_gnl_strlen(s2) + 1))))
+	join = malloc(sizeof(char) * (ft_gnl_strlen(s1)
+				+ ft_gnl_strlen(s2) + 1));
+	if (!join)
 		return (NULL);
 	i = 0;
 	j = 0;
@@ -47,15 +48,15 @@ char	*ft_gnl_strjoin(char *s1, char *s2)
 	return (join);
 }
 
-char *ft_gnl_strchr(char *s, int c)
+char	*ft_gnl_strchr(char *s, int c)
 {
-    if (c == '\0')
-        return (&((char *)s)[ft_gnl_strlen(s)]);
-    while (*s)
-    {
-        if (*s == c)
-            return ((char *)s);
-        s++;
-    }
-    return (NULL);
+	if (c == '\0')
+		return (&((char *)s)[ft_gnl_strlen(s)]);
+	while (*s)
+	{
+		if (*s == c)
+			return ((char *)s);
+		s++;
+	}
+	return (NULL);
 }

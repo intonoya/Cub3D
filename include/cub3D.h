@@ -6,7 +6,7 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:26:39 by intonoya          #+#    #+#             */
-/*   Updated: 2023/05/22 05:31:55 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/05/22 06:17:12 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,42 +119,42 @@ struct	s_vars
 	int		draw_end;
 	int		tex_x;
 	int		tex_y;
-	int		color;
+	int		colour;
 	double	buffer[WIN_WIDTH];
 	double	wall_x;
 	double	step;
 	double	tex_pos;
 }		vars;
 
-t_game 			g_game;
+t_game			g_game;
 
 //for map:
 
 int		check_map_name(char *string, char *extension);
-void    check_invalid_characters_helper(int i, int j);
+void	check_invalid_characters_helper(int i, int j);
 int		check_invalid_characters(void);
 void	first_and_last_row(char *str);
 void	col_border(char *s);
 
 //for extension:
 
-int 	file_exists(char *filename);
-int 	check_extension(char *fn, char *fm);
-int 	is_space(char *str);
+int		file_exists(char *filename);
+int		check_extension(char *fn, char *fm);
+int		is_space(char *str);
 int		check_colours(void);
 
 //ft_mlx_functions:
 
 int		ft_mlx_pressed(int keycode);
 int		ft_mlx_released(int keycode);
-void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
+void	my_mlx_pixel_put(t_img *data, int x, int y, int colour);
 
 //for matrix:
 
 void	matrix(void);
 void	minus_check(int i, int j);
 void	allocate_matrix(int rows, int cols);
-char    **free_matrix(char **map);
+char	**free_matrix(char **map);
 void	check_borders(void);
 
 //for map:
@@ -165,6 +165,7 @@ void	r_and_c(void);
 void	map_setting(int fd);
 void	get_columns(int fd);
 
+//else:
 
 void	ft_clear(void);
 int		ft_exit(char *str);
@@ -189,7 +190,7 @@ void	set_player_dir_plane(char **map);
 
 size_t	ft_gnl_strlen(char *str);
 char	*ft_gnl_strjoin(char *s1, char *s2);
-char 	*ft_gnl_strchr(char *s, int c);
+char	*ft_gnl_strchr(char *s, int c);
 int		get_next_line(int fd, char **line);
 
 void	init(int fd);
@@ -205,8 +206,8 @@ void	parsing(int fd);
 
 void	set_mlx_images(void);
 void	set_mlx_addresses(void);
-int		rgb(int *colors);
-int		get_color(t_img *data, int x, int y);
+int		rgb(int *colours);
+int		get_colour(t_img *data, int x, int y);
 
 //raycasting:
 
@@ -216,6 +217,5 @@ void	ft_wall_hit(void);
 void	ft_init_vars(void);
 void	ft_draw(int *x);
 void	ft_raycasting(void);
-
 
 #endif
