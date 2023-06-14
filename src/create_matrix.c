@@ -6,7 +6,7 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:21:07 by intonoya          #+#    #+#             */
-/*   Updated: 2023/05/17 04:59:58 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/06/12 18:48:53 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,9 @@ void	matrix(void)
 		j = 0;
 		while (j < ft_strlen(t_map.tmp_map[i]))
 		{
-			if (t_map.tmp_map[i][j] == ' ')
+			if (t_map.tmp_map[i][j] == '\t' || t_map.tmp_map[i][j] == '\n'
+			|| t_map.tmp_map[i][j] == '\r' || t_map.tmp_map[i][j] == '\v'
+			|| t_map.tmp_map[i][j] == '\f' || t_map.tmp_map[i][j] == ' ')
 				t_map.matrix[i][j] = '-';
 			else
 				t_map.matrix[i][j] = t_map.tmp_map[i][j];

@@ -6,7 +6,7 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 22:17:00 by intonoya          #+#    #+#             */
-/*   Updated: 2023/05/22 06:29:44 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/06/12 19:47:59 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	first_and_last_row(char *str)
 	while (*str)
 	{
 		if (*str != '1' && *str != '-')
-			ft_exit("Error: Open border!");
+			ft_exit("Error: Open border! 1");
 		str++;
 	}
 }
@@ -34,10 +34,7 @@ void	col_border(char *s)
 	while (s[j] == '-' && j >= 0)
 		j--;
 	if (s[i] != '1' || s[j] != '1')
-	{
-		printf("%d %d\n", i, j);
-		ft_exit("Error: Open border?");
-	}
+		ft_exit("Error: Open border!2");
 }
 
 void	check_invalid_characters_helper(int i, int j)

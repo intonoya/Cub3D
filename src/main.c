@@ -6,7 +6,7 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:32:01 by intonoya          #+#    #+#             */
-/*   Updated: 2023/05/22 06:41:11 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/06/12 19:30:29 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ void	ft_mlx_start(void)
 	mlx_put_image_to_window(g_game.mlx, g_game.mlx_win, t_map.data.img, 0, 0);
 	mlx_hook(g_game.mlx_win, 2, 1L << 0, ft_mlx_pressed, &g_game.mlx);
 	mlx_hook(g_game.mlx_win, 3, 1L << 1, ft_mlx_released, &g_game.mlx);
-	mlx_hook(g_game.mlx_win, 17, 1L << 17, ft_exit, NULL);
+	mlx_hook(g_game.mlx_win, 17, 1L << 17, ft_exit, "Game over :(");
+	mlx_hook(g_game.mlx_win, 4, 1L << 2, ft_mlx_mouse_pressed, &g_game.mlx);
+	mlx_hook(g_game.mlx_win, 5, 1L << 3, ft_mlx_mouse_released, &g_game.mlx);
 	mlx_loop_hook(g_game.mlx, start, &g_game);
 	mlx_loop(g_game.mlx);
 }
@@ -44,5 +46,7 @@ int	main(int argc, char **argv)
 		ft_mlx_start();
 		ft_free();
 	}
+	else
+		ft_exit("Error: Invalid arguments!");
 	return (0);
 }

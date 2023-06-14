@@ -6,7 +6,7 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:11:44 by intonoya          #+#    #+#             */
-/*   Updated: 2023/05/22 06:48:49 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/06/12 20:45:00 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,17 @@ void	ft_free(void)
 	free(t_map.east.path);
 	free(t_map.east.img);
 	free(t_map.east.addr);
+}
+
+void	wtf_2(char **zibil, char **axb, char **slaves)
+{
+	free(*zibil);
+	free(*axb);
+	free(*slaves);
+}
+
+void	wtf(char **zibil, char **axb)
+{
+	free(*zibil);
+	free(*axb);
 }

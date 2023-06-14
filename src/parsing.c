@@ -6,7 +6,7 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 16:13:10 by intonoya          #+#    #+#             */
-/*   Updated: 2023/05/17 02:46:00 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/06/12 20:12:17 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_colour(char *line, char mode)
 	{
 		if (mode == 'F')
 			t_map.f_colour[i] = ft_atoi(colours[i]);
-		else if (mode == 'C')
+		if (mode == 'C')
 			t_map.c_colour[i] = ft_atoi(colours[i]);
 		i++;
 	}
@@ -66,20 +66,20 @@ void	ft_texture(char *line)
 		t_map.rows_tmp++;
 		line++;
 	}
-	if (line[0] == 'N' && line[1] == 'O')
-	{
+	if (line[0] == 'N' && line[1] == 'O' && t_map.counts.n++ < 1)
 		t_map.north.path = texture_path(line + 2);
-	}
-	else if (line[0] == 'S' && line[1] == 'O')
+	else if (line[0] == 'S' && line[1] == 'O' && t_map.counts.s++ < 1)
 		t_map.south.path = texture_path(line + 2);
-	else if (line[0] == 'W' && line[1] == 'E')
+	else if (line[0] == 'W' && line[1] == 'E' && t_map.counts.w++ < 1)
 		t_map.west.path = texture_path(line + 2);
-	else if (line[0] == 'E' && line[1] == 'A')
+	else if (line[0] == 'E' && line[1] == 'A' && t_map.counts.e++ < 1)
 		t_map.east.path = texture_path(line + 2);
-	else if (line[0] == 'F')
+	else if (line[0] == 'F' && t_map.counts.f++ < 1)
 		ft_colour(line + 1, 'F');
-	else if (line[0] == 'C')
+	else if (line[0] == 'C' && t_map.counts.c++ < 1)
 		ft_colour(line + 1, 'C');
+	else
+		ft_exit("Error: Parsing error!");
 }
 
 void	parsing(int fd)

@@ -26,5 +26,11 @@ void	init(int fd)
 	g_game.rot_speed = 0.04;
 	g_game.posx = 0;
 	g_game.posy = 0;
+	t_map.counts.c = 0;
+	t_map.counts.f = 0;
+	t_map.counts.s = 0;
+	t_map.counts.n = 0;
+	t_map.counts.w = 0;
+	t_map.counts.e = 0;
 	get_columns(fd);
 }

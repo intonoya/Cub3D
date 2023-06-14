@@ -32,7 +32,11 @@ void	read_arrow_keys(void)
 	old_planex = g_game.planex;
 	old_dirx = g_game.dirx;
 	if (t_map.keys.right)
+	{
 		right_key(old_dirx, old_planex);
+		if (t_map.mouse_hook)
+			t_map.keys.right = 0;
+	}
 	else if (t_map.keys.left)
 	{
 		g_game.dirx = g_game.dirx * cos(g_game.rot_speed) - g_game.diry
@@ -43,6 +47,8 @@ void	read_arrow_keys(void)
 			* sin(g_game.rot_speed);
 		g_game.planey = old_planex * sin(g_game.rot_speed) + g_game.planey
 			* cos(g_game.rot_speed);
+		if (t_map.mouse_hook)
+			t_map.keys.left = 0;
 	}
 }
 

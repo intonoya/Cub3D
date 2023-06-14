@@ -6,7 +6,7 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 12:26:39 by intonoya          #+#    #+#             */
-/*   Updated: 2023/05/22 06:17:12 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/06/12 20:44:29 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,16 @@ typedef struct s_img
 	int			height;
 	int			width;
 }				t_img;
+
+typedef struct s_key_count
+{
+	int	w;
+	int	e;
+	int	s;
+	int	n;
+	int	f;
+	int	c;
+}	t_key_count;
 
 //for gnl:
 
@@ -71,6 +81,7 @@ struct s_map
 	t_img		west;
 	t_img		east;
 	t_keys		keys;
+	t_key_count	counts;
 	int			f_colour[3];
 	int			c_colour[3];
 	int			rows_tmp;
@@ -78,6 +89,7 @@ struct s_map
 	int			cols;
 	char		**tmp_map;
 	char		**matrix;
+	int			mouse_hook;
 }				t_map;
 
 //for cub:
@@ -148,6 +160,8 @@ int		check_colours(void);
 int		ft_mlx_pressed(int keycode);
 int		ft_mlx_released(int keycode);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int colour);
+int		ft_mlx_mouse_pressed(int button, int x, int y, t_game *mlx);
+int		ft_mlx_mouse_released(int button, int x, int y, t_game *mlx);
 
 //for matrix:
 
@@ -171,6 +185,8 @@ void	ft_clear(void);
 int		ft_exit(char *str);
 void	ft_free(void);
 int		start(void);
+void	wtf(char **zibil, char **axb);
+void	wtf_2(char **zibil, char **axb, char **slaves);
 
 //keys:
 

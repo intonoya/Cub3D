@@ -6,7 +6,7 @@
 /*   By: intonoya <intonoya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:17:48 by intonoya          #+#    #+#             */
-/*   Updated: 2023/05/22 06:42:01 by intonoya         ###   ########.fr       */
+/*   Updated: 2023/06/12 20:51:39 by intonoya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@ char	*remove_empty_lines(int fd)
 	return (line);
 }
 
+void	puchurik_funkcia(char **result, char *line, char **a)
+{
+	*a = ft_strjoin(line, "\n");
+	*result = ft_strjoin(*result, *a);
+	free(*a);
+}
+
 void	tmp_map(int fd)
 {
 	int		r;
@@ -50,15 +57,15 @@ void	tmp_map(int fd)
 	{
 		a = ft_strjoin(line, "\n");
 		tmp = ft_strjoin(result, a);
-		free(result);
-		free(a);
+		wtf(&a, &result);
 		result = tmp;
 		free(line);
 		r = get_next_line(fd, &line);
 	}
+	if (line)
+		puchurik_funkcia(&result, line, &a);
 	t_map.tmp_map = ft_split(result, '\n');
-	free(line);
-	free(result);
+	wtf_2(&line, &result, &tmp);
 }
 
 void	r_and_c(void)
